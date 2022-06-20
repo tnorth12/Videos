@@ -1,3 +1,5 @@
+from products import views
+
 """products_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,5 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/products/', include('products.urls'))
+    path('api/products/', include('products.urls')),
+    
+    
 ]
