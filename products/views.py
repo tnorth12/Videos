@@ -26,17 +26,17 @@ def products_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def products_detail(request, pk):
-    products = get_object_or_404(Products, pk=pk)
+    product = get_object_or_404(Products, pk=pk)
     if request.method == 'GET':
         
-        serializer = ProductsSerializer(products)
+        serializer = ProductsSerializer(product)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = ProductsSerializer(products, data=request.data)
+        serializer = ProductsSerializer(product, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-    elif request.method == 'Delete':
+    elif request.method == 'DELETE':
         
-        products.delete()
+        product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
